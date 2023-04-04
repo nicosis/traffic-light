@@ -22,7 +22,7 @@
 }
 
 .stick::after {
-  content: '';
+  content: "";
   position: absolute;
   width: 50px;
   height: 60px;
@@ -40,7 +40,7 @@
 }
 
 .light::after {
-  content: '';
+  content: "";
   position: absolute;
   width: 120px;
   height: 120px;

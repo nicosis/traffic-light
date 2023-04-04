@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "../../styles/TrafficLight.css";
-// import skyImage from "../../img/sky.jpg";
+import skyImage from "../../img/sky.jpg";
+
 
 const TrafficLight = () => {
   const [lightOn, setLightOn] = useState("none");
