@@ -1,5 +1,5 @@
 body {
-    /* background-image: url(../img/sky.jpg); */
-    background-color: rgb(139, 204, 226)
-
+  background-color: rgb(139, 204, 226);
+  background-image: url("https://picsum.photos/id/182/1400/700");
+  /* background-image: url("../img/sky.jpg")  */
 }
