@@ -3,47 +3,41 @@ import "../../styles/TrafficLight.css";
 // import skyImage from "../../img/sky.jpg";
 
 const TrafficLight = () => {
-  const [redLightOn, setRedLight] = useState(false);
-  const [yellowLightOn, setYellowLight] = useState(false);
-  const [greenLightOn, setGreenLight] = useState(false);
+  const [lightOn, setLightOn] = useState("none");
 
-  let redLightClass = "light light-red";
-  let yellowLightClass = "light light-yellow";
-  let greenLightClass = "light light-green";
-
-  redLightOn ? (redLightClass += " light--selected") : "";
-  yellowLightOn ? (yellowLightClass += " light--selected") : "";
-  greenLightOn ? (greenLightClass += " light--selected") : "";
-
-  const handlerOffClick = () => {
-    setRedLight(false);
-    setYellowLight(false);
-    setGreenLight(false);
-  };
   const handleRedClick = (event) => {
     event.stopPropagation();
-    setRedLight(true);
-    setYellowLight(false);
-    setGreenLight(false);
+    setLightOn("red");
   };
   const handleYellowClick = (event) => {
     event.stopPropagation();
-    setRedLight(false);
-    setYellowLight(true);
-    setGreenLight(false);
+    setLightOn("yellow");
   };
   const handleGreenClick = (event) => {
     event.stopPropagation();
-    setRedLight(false);
-    setYellowLight(false);
-    setGreenLight(true);
+    setLightOn("green");
+  };
+  const handleOffClick = (event) => {
+    event.stopPropagation();
+    setLightOn("");
   };
 
+  let lightRed = "light light-red";
+  let lightYellow = "light light-yellow";
+  let lightGreen = "light light-green";
+
+  lightOn === "red" ? (lightRed += " light--selected") : "";
+  lightOn === "yellow" ? (lightYellow += " light--selected") : "";
+  lightOn === "green" ? (lightGreen += " light--selected") : "";
+
   return (
-    <div onClick={handlerOffClick} className="contenedor">
-      <div onClick={handleRedClick} className={redLightClass}></div>
-      <div onClick={handleYellowClick} className={yellowLightClass}></div>
-      <div onClick={handleGreenClick} className={greenLightClass}></div>
+    <div onClick={handleOffClick} className="contenedor">
+        <div className="stick"></div>
+      <div className="box">
+        <div onClick={handleRedClick} className={lightRed}></div>
+        <div onClick={handleYellowClick} className={lightYellow}></div>
+        <div onClick={handleGreenClick} className={lightGreen}></div>
+      </div>
     </div>
   );
 };
