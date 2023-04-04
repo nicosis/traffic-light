@@ -11,15 +11,9 @@ const TrafficLight = () => {
   let yellowLightClass = "light light-yellow";
   let greenLightClass = "light light-green";
 
-  if (redLightOn) {
-    redLightClass += " light--selected";
-  }
-  if (yellowLightOn) {
-    yellowLightClass += " light--selected";
-  }
-  if (greenLightOn) {
-    greenLightClass += " light--selected";
-  }
+  redLightOn ? (redLightClass += " light--selected") : "";
+  yellowLightOn ? (yellowLightClass += " light--selected") : "";
+  greenLightOn ? (greenLightClass += " light--selected") : "";
 
   const handlerOffClick = () => {
     setRedLight(false);
