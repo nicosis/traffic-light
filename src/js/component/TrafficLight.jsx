@@ -1,10 +1,22 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../../styles/TrafficLight.css";
-import skyImage from "../../img/sky.jpg";
-
 
 const TrafficLight = () => {
-  const [lightOn, setLightOn] = useState("none");
+  const [lightOn, setLightOn] = useState("");
+
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (event.key === "r") setLightOn("red");
+      if (event.key === "y") setLightOn("yellow");
+      if (event.key === "g") setLightOn("green");
+      
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, []);
+
+  console.log(lightOn);
 
   const handleRedClick = (event) => {
     event.stopPropagation();
@@ -27,13 +39,13 @@ const TrafficLight = () => {
   let lightYellow = "light light-yellow";
   let lightGreen = "light light-green";
 
-  lightOn === "red" ? (lightRed += " light--selected") : "";
-  lightOn === "yellow" ? (lightYellow += " light--selected") : "";
-  lightOn === "green" ? (lightGreen += " light--selected") : "";
+  lightOn === "red" ? (lightRed += " light_selected") : "";
+  lightOn === "yellow" ? (lightYellow += " light_selected") : "";
+  lightOn === "green" ? (lightGreen += " light_selected") : "";
 
   return (
     <div onClick={handleOffClick} className="contenedor">
-        <div className="stick"></div>
+      <div className="stick"></div>
       <div className="box">
         <div onClick={handleRedClick} className={lightRed}></div>
         <div onClick={handleYellowClick} className={lightYellow}></div>
